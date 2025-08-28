@@ -26,12 +26,12 @@ Com os seguintes dados:
 
 ```
 {
-    "nome": "vinicios neves",
-    "email": "vinicios@alura.com.br",
+    "nome": "michael marin",
+    "email": "michael@teste.com",
     "senha": "123456",
-    "endereco": "Rua Vergueiro, 3185",
-    "complemento": "Vila Mariana",
-    "cep": "04101-300"
+    "endereco": "Rua teste, 1234",
+    "complemento": "Vila dos testes",
+    "cep": "0101010-000"
 }
 ```
 
@@ -50,7 +50,7 @@ Com os seguintes dados:
 
 ```
 {
-  "email": "vinicios@alura.com.br",
+  "email": "michael@teste.com",
   "senha":"123456"
 }
 ```
