@@ -25,14 +25,16 @@ Esta é uma API mock que simula um serviço de back-end real, com persistência 
 
 Para iniciar o servidor da API localmente, siga os passos:
 
-```bash
+```
 # 1. Instale as dependências do projeto
 npm install
 
 # 2. Inicie o servidor com o middleware de autenticação
 npm run start-auth
 
-2. Como se Registrar
+---
+
+### 2. Como se Registrar
 Para criar um novo usuário, envie uma requisição POST para o endpoint público de registro.
 
 Endpoint: POST http://localhost:8000/public/registrar
@@ -51,7 +53,9 @@ JSON
 }
 Nota: O campo email é único. Tentativas de registrar um e-mail já existente resultarão em erro.
 
-3. Como Fazer Login
+---
+
+### 3. Como Fazer Login
 Após o registro, você pode autenticar o usuário para obter um token de acesso.
 
 Endpoint: POST http://localhost:8000/public/login
@@ -79,7 +83,8 @@ JSON
       ...
    }
 }
-4. Autenticando Requisições Futuras
+
+### 4. Autenticando Requisições Futuras
 Para acessar rotas protegidas da API, você deve incluir o access_token no cabeçalho (Header) de autorização de todas as suas próximas requisições.
 
 Header:
