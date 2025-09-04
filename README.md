@@ -1,30 +1,46 @@
-# AllBooks
+# AllBooks - Loja Virtual com API Mock
 
-O AllBooks é uma loja virtual que vende livros da Casa do Código. 
-É um MVP que tá só começando e ainda tem muitas funcionalidades novas para serem desenvolvidas.
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![JSON Server](https://img.shields.io/badge/JSON--Server-7d467d?style=for-the-badge)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
 
-# JSONServer + JWT Auth
+Este repositório contém dois componentes principais:
 
-Essa é ma API Rest mockada, utilizando json-server e JWT.
+1.  **AllBooks**: O front-end de um MVP (Minimum Viable Product) de uma loja virtual para venda de livros da Casa do Código.
+2.  **API Mock**: Uma API RESTful para dar suporte ao front-end, construída com **JSON Server** e autenticação via **JSON Web Tokens (JWT)**.
 
-## 🛠️ Instalação
+---
+
+## 📚 Sobre o Projeto AllBooks
+
+O AllBooks é o conceito de uma loja virtual focada em livros. Como um MVP, ele representa a base inicial do projeto, com muitas funcionalidades planejadas para o futuro. A API mockada serve para simular o comportamento de um back-end real, permitindo o desenvolvimento e teste de funcionalidades como cadastro, login e acesso a rotas protegidas.
+
+---
+
+## ⚙️ API Mock (JSON Server + JWT Auth)
+
+Esta é uma API mock que simula um serviço de back-end real, com persistência de dados em um arquivo `db.json` e um sistema de autenticação seguro.
+
+### 1. Instalação e Execução
+
+Para iniciar o servidor da API localmente, siga os passos:
 
 ```bash
-$ npm install
-$ npm run start-auth
-```
-## 🛠️ Como se registrar?
+# 1. Instale as dependências do projeto
+npm install
 
-Você pode fazer isso efetuando uma requisição post para:
+# 2. Inicie o servidor com o middleware de autenticação
+npm run start-auth
 
-```
-POST http://localhost:8000/public/registrar
-```
+2. Como se Registrar
+Para criar um novo usuário, envie uma requisição POST para o endpoint público de registro.
 
-Com os seguintes dados:
+Endpoint: POST http://localhost:8000/public/registrar
 
+Corpo da Requisição (Body):
 
-```
+JSON
+
 {
     "nome": "michael marin",
     "email": "michael@teste.com",
@@ -33,41 +49,39 @@ Com os seguintes dados:
     "complemento": "Vila dos testes",
     "cep": "0101010-000"
 }
-```
+Nota: O campo email é único. Tentativas de registrar um e-mail já existente resultarão em erro.
 
-Repare que o e-mail é um campo único e usuários com e-mails duplicados não serão persistidos.
+3. Como Fazer Login
+Após o registro, você pode autenticar o usuário para obter um token de acesso.
 
-## 🛠️ Como fazer login?
+Endpoint: POST http://localhost:8000/public/login
 
-Você pode fazer isso efetuando uma requisição post para:
+Corpo da Requisição (Body):
 
-```
-POST http://localhost:8000/public/login
-```
+JSON
 
-Com os seguintes dados:
-
-
-```
 {
   "email": "michael@teste.com",
-  "senha":"123456"
+  "senha": "123456"
 }
-```
+A resposta conterá o token de acesso e os dados do usuário.
 
-Você vai receber um token no seguinte formato:
+Resposta:
 
-```
+JSON
+
 {
-   "access_token": "<ACCESS_TOKEN>",
-   "user": { ... dados do usuário ... }
+   "access_token": "<SEU_ACCESS_TOKEN>",
+   "user": {
+      "nome": "michael marin",
+      "email": "michael@teste.com",
+      "id": 1
+      ...
+   }
 }
-```
+4. Autenticando Requisições Futuras
+Para acessar rotas protegidas da API, você deve incluir o access_token no cabeçalho (Header) de autorização de todas as suas próximas requisições.
 
-## Autenticar próximas requests?
+Header:
 
-E então, adicionar este mesmo token ao header das próximas requisições:
-
-```
-Authorization: Bearer <ACCESS_TOKEN>
-```
+Authorization: Bearer <SEU_ACCESS_TOKEN>
